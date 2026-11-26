@@ -1,0 +1,2 @@
+# Keep vendored upstream Fortran byte-for-byte (CRLF included).
+targets/** -text
