@@ -73,7 +73,7 @@ memory-safe and callable from Rust and JavaScript.
 
 **User story:** As a visitor, I want to run the resurrected code in my browser.
 
-1. The web demo SHALL load the `wasm-pack --target web` output without a bundler.
+1. The web demo SHALL load the `wasm-pack --target web` output and build to static files.
 2. The web demo SHALL let users enter a deformation gradient and show the computed Voigt tensor results.
 3. WHEN the wasm routine returns an error THEN the page SHALL display the message instead of failing silently.
 4. The web demo SHALL use only static assets.

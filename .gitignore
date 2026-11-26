@@ -1,3 +1,8 @@
 /oracle-harness/target/
 /oracle-harness/pkg/
 target/
+/web-demo/node_modules/
+/web-demo/dist/
+/orchestrator/.work/
+__pycache__/
+.pytest_cache/

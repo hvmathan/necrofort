@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  --color-crypt-950: #06070b;
+  --color-crypt-900: #0b0d14;
+  --color-crypt-850: #10131c;
+  --color-crypt-800: #151925;
+  --color-crypt-700: #1f2433;
+  --color-crypt-600: #2c3347;
+  --color-crypt-500: #414a63;
+  --color-bone-50: #f7f4ee;
+  --color-bone-100: #ece8df;
+  --color-bone-300: #bdb8ad;
+  --color-bone-500: #8a867d;
+  --color-ecto-300: #a6f7bd;
+  --color-ecto-400: #6ff09a;
+  --color-ecto-500: #34d978;
+  --color-ecto-900: #0e3320;
+  --color-ember-300: #ffd08a;
+  --color-ember-400: #ffb347;
+  --color-ember-900: #3a2709;
+  --color-blood-300: #ff9aa4;
+  --color-blood-400: #ff5d6c;
+  --color-blood-900: #3b1016;
+  --color-spirit-300: #d4c2ff;
+  --color-spirit-400: #b18cff;
+  --color-spirit-900: #241a3d;
+  --color-frost-400: #6cc7ff;
+  --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-display: "Cinzel", "Trajan Pro", Georgia, serif;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    background:
+      radial-gradient(1200px 600px at 10% -10%, rgb(52 217 120 / 0.07), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, rgb(177 140 255 / 0.08), transparent 60%),
+      var(--color-crypt-950);
+    min-height: 100vh;
+  }
+  ::selection {
+    background: rgb(111 240 154 / 0.3);
+  }
+}
+
+@layer components {
+  .panel {
+    @apply rounded-2xl border border-crypt-700/80 bg-crypt-900/80 shadow-[0_0_0_1px_rgb(0_0_0/0.3),0_20px_40px_-20px_rgb(0_0_0/0.8)] backdrop-blur;
+  }
+  .panel-title {
+    @apply flex items-center gap-2 text-xs font-semibold tracking-[0.18em] text-bone-300 uppercase;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[11px] font-medium;
+  }
+  .kbd {
+    @apply rounded border border-crypt-600 bg-crypt-800 px-1.5 py-0.5 font-mono text-[11px] text-bone-300;
+  }
+  .scroll-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-crypt-600) transparent;
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgb(111 240 154 / 0.45);
+  }
+  100% {
+    box-shadow: 0 0 0 10px rgb(111 240 154 / 0);
+  }
+}
+
+input[type="range"] {
+  accent-color: var(--color-ecto-400);
+}
