@@ -18,33 +18,38 @@
 - [x] 8. Pass gate: `cargo test`, `cargo clippy --all-targets -- -D warnings`, `wasm-pack build --target web`
   - _Requirements: 4.4, 4.5_
 
-## Phase 2: Remaining leaf kernels
+## Phase 2: Remaining kernels and UMAT
 
-- [ ] 9. Resurrect `DETERMINANT` + differential property (include near-singular `F`)
+- [x] 9. Resurrect `DETERMINANT` + differential properties (general and near-singular)
   - _Requirements: 3.2, 4.1_
-- [ ] 10. Resurrect `TRANSPOSE` + property
+- [x] 10. Resurrect `TRANSPOSE` + property (bit-identical)
   - _Requirements: 3.2, 4.1_
-- [ ] 11. Resurrect `TENF` + property (check `N == 4` zero-fill branch)
+- [x] 11. Resurrect `TENF` + property (covers the `N == 4` zero-fill branch)
   - _Requirements: 3.2, 4.1_
-
-## Phase 2: `orchestrator/`
-
-- [ ] 12. Create `orchestrator/` binary crate with a fixed-form F77 lexer (labels, continuation, comments, col 72 truncation)
-  - _Requirements: 5.1_
-- [ ] 13. Program-unit index and CALL/COMMON/INCLUDE dependency graph for `targets/bioumat`
-  - _Requirements: 5.1_
-- [ ] 14. Leaves-first scheduler
-  - _Requirements: 5.2_
-- [ ] 15. Per-routine pipeline: extraction entry, Rust draft, generated proptest, gate run, JSON report
-  - _Requirements: 5.3, 5.5_
-- [ ] 16. Enforce 5-attempt retry cap with blocker report
-  - _Requirements: 5.4_
-- [ ] 17. Resurrect `UMAT`: `ABA_PARAM.INC` shim generated in `build.rs`, `GO TO 80/90` loop -> structured `loop`, `&mut` state for `STATEV`/`DFGRD1`
+- [x] 12. Resurrect `UMAT`: `ABA_PARAM.INC` stand-in generated in `build.rs`, `GO TO 80/90` loop -> structured `for`, `&mut UmatState`, `#[wasm_bindgen] umat`
   - _Requirements: 2.2, 3.4, 3.5_
+
+## Phase 2: `orchestrator/` (Python)
+
+- [x] 13. `f77_analyzer.py`: fixed-form lexer, units, signatures, implicit typing, COMMON, CALL graph, GO TO labels, hazards, spec JSON/Markdown
+  - _Requirements: 5.1_
+- [x] 14. Leaves-first scheduler
+  - _Requirements: 5.2_
+- [x] 15. `graph.py` state machine with the 4-check oracle gate and `run_log.json`
+  - _Requirements: 5.3, 5.5_
+- [x] 16. Counterexample-driven self-heal with a 5-attempt cap and blocker report; `--demo-bug`
+  - _Requirements: 5.4_
+- [x] 17. Unit tests (`pytest orchestrator/tests`)
 
 ## Phase 2: `web-demo/`
 
-- [ ] 18. Static `web-demo/index.html` + ES module loading `oracle-harness/pkg`
+- [x] 18. React + Vite + Tailwind static app loading `oracle-harness/pkg`
   - _Requirements: 6.1, 6.4_
-- [ ] 19. Deformation-gradient input form, `b = F F^T` output, error display
+- [x] 19. Dashboard tab (source, spec, state graph, counterexample, PR) and Lab tab (F sliders, stress / `b` plots, DDSDDE, errors)
   - _Requirements: 6.2, 6.3_
+
+## Later
+
+- [ ] 20. `FLOW` (pore-fluid boundary condition) port
+- [ ] 21. `SDVINI`: decide how to handle code that does not compile as written (`CALL RANDOM-NUMBER`, integer `.OR.`)
+- [ ] 22. Pluggable LLM healer for fault classes beyond index offsets

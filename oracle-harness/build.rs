@@ -5,6 +5,10 @@
 //! `$OUT_DIR/bioumat_kernels.f`, compiled with `gfortran -std=legacy -c`, archived,
 //! and linked into test binaries only. The upstream file is never modified.
 //!
+//! `UMAT` starts with `INCLUDE 'ABA_PARAM.INC'`, an Abaqus-supplied header that is
+//! not part of the upstream repository. A minimal stand-in with the standard
+//! Abaqus contents is written next to the extracted source in `$OUT_DIR`.
+//!
 //! For `wasm32-*` targets this script does nothing: the oracle is host-only.
 
 use std::env;
@@ -13,7 +17,12 @@ use std::path::PathBuf;
 use std::process::Command;
 
 const SOURCE: &str = "../targets/bioumat/SUBROUTINES.FOR";
-const ROUTINES: &[&str] = &["TRANSPOSE", "DETERMINANT", "VMATMUL", "TENF"];
+const ROUTINES: &[&str] = &["TRANSPOSE", "DETERMINANT", "VMATMUL", "TENF", "UMAT"];
+
+/// Minimal stand-in for Abaqus' `ABA_PARAM.INC` (double-precision build): implicit
+/// `REAL*8` for every name outside `I-N`, and the precision flag Abaqus defines.
+/// Keep in sync with `ABA_PARAM_INC` in `orchestrator/f77_analyzer.py`.
+const ABA_PARAM_INC: &str = "      IMPLICIT REAL*8(A-H,O-Z)\n      PARAMETER (NPRECD=2)\n";
 
 fn main() {
     println!("cargo:rerun-if-changed=build.rs");
@@ -39,12 +48,14 @@ fn main() {
     }
     let f_path = out_dir.join("bioumat_kernels.f");
     fs::write(&f_path, kernels).expect("write extracted kernels");
+    fs::write(out_dir.join("ABA_PARAM.INC"), ABA_PARAM_INC).expect("write ABA_PARAM.INC");
 
     let obj = out_dir.join("bioumat_kernels.o");
     let fc = env::var("FC").unwrap_or_else(|_| "gfortran".to_string());
     run(
         Command::new(&fc)
             .args(["-std=legacy", "-ffp-contract=off", "-O2", "-fPIC", "-c"])
+            .arg(format!("-I{}", out_dir.display()))
             .arg(&f_path)
             .arg("-o")
             .arg(&obj),

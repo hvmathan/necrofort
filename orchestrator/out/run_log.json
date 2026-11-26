@@ -1,0 +1,905 @@
+{
+  "schema": "necrofort.run_log/v1",
+  "run_id": "20261126T163129Z",
+  "mode": "demo-bug",
+  "args": {
+    "demo_bug": true,
+    "max_heals": 5,
+    "pr_mode": "status",
+    "pr_number": 2
+  },
+  "started_at": "2026-11-26T16:31:29.049Z",
+  "finished_at": "2026-11-26T16:31:32.989Z",
+  "outcome": "success",
+  "graph": {
+    "states": [
+      "PARSE",
+      "SPEC",
+      "TRANSMUTE",
+      "ORACLE_GATE",
+      "SELF_HEAL",
+      "PR",
+      "DONE",
+      "BLOCKED"
+    ],
+    "edges": [
+      [
+        "PARSE",
+        "BLOCKED"
+      ],
+      [
+        "PARSE",
+        "SPEC"
+      ],
+      [
+        "SPEC",
+        "BLOCKED"
+      ],
+      [
+        "SPEC",
+        "TRANSMUTE"
+      ],
+      [
+        "TRANSMUTE",
+        "BLOCKED"
+      ],
+      [
+        "TRANSMUTE",
+        "ORACLE_GATE"
+      ],
+      [
+        "ORACLE_GATE",
+        "BLOCKED"
+      ],
+      [
+        "ORACLE_GATE",
+        "PR"
+      ],
+      [
+        "ORACLE_GATE",
+        "SELF_HEAL"
+      ],
+      [
+        "SELF_HEAL",
+        "BLOCKED"
+      ],
+      [
+        "SELF_HEAL",
+        "ORACLE_GATE"
+      ],
+      [
+        "PR",
+        "BLOCKED"
+      ],
+      [
+        "PR",
+        "DONE"
+      ]
+    ]
+  },
+  "host": {
+    "platform": "Linux-6.1.190-237.442.amzn2023.x86_64-x86_64-with-glibc2.34",
+    "python": "3.11.15"
+  },
+  "toolchain": {
+    "gfortran": "GNU Fortran (GCC) 11.5.0 20240719 (Red Hat 11.5.0-5)",
+    "cargo": "cargo 1.92.0 (344c4567c 2025-10-21)",
+    "rustc": "rustc 1.92.0 (ded5c06cf 2025-12-08)",
+    "wasm_pack": "wasm-pack 0.15.1"
+  },
+  "target": {
+    "path": "targets/bioumat/SUBROUTINES.FOR",
+    "sha256": "edabea62784338bd338a19620dd91d4c8a23084783c034205ea317ae83150bd5",
+    "bytes": 15790,
+    "lines": 463,
+    "line_endings": "CRLF",
+    "comment_lines": 107,
+    "code_lines": 354
+  },
+  "scope": {
+    "SDVINI": {
+      "status": "out_of_scope",
+      "reason": "does not compile as written: INVALID_CALL_NAME, LOGICAL_OP_ON_INTEGERS"
+    },
+    "FLOW": {
+      "status": "not_scheduled",
+      "reason": "pore-fluid flow boundary condition; not part of the stress kernel (later phase)"
+    },
+    "TRANSPOSE": {
+      "status": "scheduled",
+      "rust": "transpose"
+    },
+    "DETERMINANT": {
+      "status": "scheduled",
+      "rust": "determinant"
+    },
+    "VMATMUL": {
+      "status": "scheduled",
+      "rust": "vmatmul"
+    },
+    "TENF": {
+      "status": "scheduled",
+      "rust": "tenf"
+    },
+    "UMAT": {
+      "status": "scheduled",
+      "rust": "umat"
+    }
+  },
+  "transitions": [
+    {
+      "seq": 1,
+      "from": null,
+      "to": "PARSE",
+      "at": "2026-11-26T16:31:29.082Z",
+      "reason": "start"
+    },
+    {
+      "seq": 2,
+      "from": "PARSE",
+      "to": "SPEC",
+      "at": "2026-11-26T16:31:29.095Z",
+      "reason": "parsed"
+    },
+    {
+      "seq": 3,
+      "from": "SPEC",
+      "to": "TRANSMUTE",
+      "at": "2026-11-26T16:31:29.098Z",
+      "reason": "spec ready"
+    },
+    {
+      "seq": 4,
+      "from": "TRANSMUTE",
+      "to": "ORACLE_GATE",
+      "at": "2026-11-26T16:31:29.104Z",
+      "reason": "translations staged"
+    },
+    {
+      "seq": 5,
+      "from": "ORACLE_GATE",
+      "to": "SELF_HEAL",
+      "at": "2026-11-26T16:31:30.141Z",
+      "reason": "counterexample in TENF M(3,1)"
+    },
+    {
+      "seq": 6,
+      "from": "SELF_HEAL",
+      "to": "ORACLE_GATE",
+      "at": "2026-11-26T16:31:30.142Z",
+      "reason": "patched oracle-harness/src/lib.rs:171"
+    },
+    {
+      "seq": 7,
+      "from": "ORACLE_GATE",
+      "to": "PR",
+      "at": "2026-11-26T16:31:32.129Z",
+      "reason": "all 4 checks passed"
+    },
+    {
+      "seq": 8,
+      "from": "PR",
+      "to": "DONE",
+      "at": "2026-11-26T16:31:32.989Z",
+      "reason": "done"
+    }
+  ],
+  "steps": [
+    {
+      "seq": 1,
+      "state": "PARSE",
+      "started_at": "2026-11-26T16:31:29.082Z",
+      "finished_at": "2026-11-26T16:31:29.095Z",
+      "duration_ms": 13,
+      "status": "ok",
+      "summary": "7 units, 2 GO TOs (2 backward), 0 COMMON blocks, hazards {'error': 2, 'warning': 4, 'info': 14}",
+      "details": {
+        "units": [
+          {
+            "name": "SDVINI",
+            "kind": "SUBROUTINE",
+            "lines": [
+              9,
+              99
+            ]
+          },
+          {
+            "name": "FLOW",
+            "kind": "SUBROUTINE",
+            "lines": [
+              104,
+              116
+            ]
+          },
+          {
+            "name": "UMAT",
+            "kind": "SUBROUTINE",
+            "lines": [
+              122,
+              392
+            ]
+          },
+          {
+            "name": "TRANSPOSE",
+            "kind": "SUBROUTINE",
+            "lines": [
+              400,
+              409
+            ]
+          },
+          {
+            "name": "DETERMINANT",
+            "kind": "SUBROUTINE",
+            "lines": [
+              413,
+              419
+            ]
+          },
+          {
+            "name": "VMATMUL",
+            "kind": "SUBROUTINE",
+            "lines": [
+              423,
+              435
+            ]
+          },
+          {
+            "name": "TENF",
+            "kind": "SUBROUTINE",
+            "lines": [
+              439,
+              461
+            ]
+          }
+        ],
+        "summary": {
+          "units": 7,
+          "gotos": 2,
+          "backward_gotos": 2,
+          "common_blocks": 0,
+          "hazards": {
+            "error": 2,
+            "warning": 4,
+            "info": 14
+          },
+          "units_with_errors": [
+            "SDVINI"
+          ]
+        }
+      }
+    },
+    {
+      "seq": 2,
+      "state": "SPEC",
+      "started_at": "2026-11-26T16:31:29.096Z",
+      "finished_at": "2026-11-26T16:31:29.098Z",
+      "duration_ms": 2,
+      "status": "ok",
+      "summary": "spec.json + spec.md written; scheduled TRANSPOSE -> DETERMINANT -> VMATMUL -> TENF -> UMAT",
+      "details": {
+        "spec_json": "orchestrator/out/spec.json",
+        "schedule": [
+          "TRANSPOSE",
+          "DETERMINANT",
+          "VMATMUL",
+          "TENF",
+          "UMAT"
+        ],
+        "scope": {
+          "SDVINI": {
+            "status": "out_of_scope",
+            "reason": "does not compile as written: INVALID_CALL_NAME, LOGICAL_OP_ON_INTEGERS"
+          },
+          "FLOW": {
+            "status": "not_scheduled",
+            "reason": "pore-fluid flow boundary condition; not part of the stress kernel (later phase)"
+          },
+          "TRANSPOSE": {
+            "status": "scheduled",
+            "rust": "transpose"
+          },
+          "DETERMINANT": {
+            "status": "scheduled",
+            "rust": "determinant"
+          },
+          "VMATMUL": {
+            "status": "scheduled",
+            "rust": "vmatmul"
+          },
+          "TENF": {
+            "status": "scheduled",
+            "rust": "tenf"
+          },
+          "UMAT": {
+            "status": "scheduled",
+            "rust": "umat"
+          }
+        }
+      }
+    },
+    {
+      "seq": 3,
+      "state": "TRANSMUTE",
+      "started_at": "2026-11-26T16:31:29.098Z",
+      "finished_at": "2026-11-26T16:31:29.103Z",
+      "duration_ms": 5,
+      "status": "ok",
+      "summary": "5 Rust ports staged (demo bug planted in TENF)",
+      "details": {
+        "workspace": "/projects/sandbox/necrofort/orchestrator/.work/workspace",
+        "units": [
+          {
+            "unit": "TRANSPOSE",
+            "rust": "transpose",
+            "port": true,
+            "property": true
+          },
+          {
+            "unit": "DETERMINANT",
+            "rust": "determinant",
+            "port": true,
+            "property": true
+          },
+          {
+            "unit": "VMATMUL",
+            "rust": "vmatmul",
+            "port": true,
+            "property": true
+          },
+          {
+            "unit": "TENF",
+            "rust": "tenf",
+            "port": true,
+            "property": true
+          },
+          {
+            "unit": "UMAT",
+            "rust": "umat",
+            "port": true,
+            "property": true
+          }
+        ],
+        "planted_bug": {
+          "routine": "TENF",
+          "file": "oracle-harness/src/lib.rs",
+          "line": 171,
+          "before": "m[ix(3, 1)] = v[4]; // M(3,1)=V(5)",
+          "after": "m[ix(3, 1)] = v[5]; // M(3,1)=V(5)",
+          "description": "0-based vs 1-based slip: the F77 statement M(3,1)=V(5) was transmuted with the Fortran subscript copied literally, so Rust reads v[5] (= V(6)) instead of v[4]. It compiles, passes clippy, and stays in bounds for N=6, so only the differential test can catch it."
+        }
+      }
+    },
+    {
+      "seq": 4,
+      "state": "ORACLE_GATE",
+      "started_at": "2026-11-26T16:31:29.104Z",
+      "finished_at": "2026-11-26T16:31:30.140Z",
+      "duration_ms": 1036,
+      "status": "failed",
+      "summary": "gate attempt 1: gfortran ok, cargo_test FAILED",
+      "details": {
+        "attempt": 1,
+        "checks": [
+          {
+            "check": "gfortran",
+            "cmd": "gfortran -std=legacy -ffp-contract=off -O2 -c kernels.f -o kernels.o",
+            "ok": true,
+            "returncode": 0,
+            "duration_ms": 117,
+            "metrics": {
+              "units": [
+                "TRANSPOSE",
+                "DETERMINANT",
+                "VMATMUL",
+                "TENF",
+                "UMAT"
+              ]
+            },
+            "output_tail": ""
+          },
+          {
+            "check": "cargo_test",
+            "cmd": "cargo test --no-fail-fast -- --nocapture --test-threads=1",
+            "ok": false,
+            "returncode": 101,
+            "duration_ms": 915,
+            "metrics": {
+              "properties": {
+                "determinant_matches_oracle_general": 1024,
+                "determinant_matches_oracle_near_singular": 1024,
+                "transpose_matches_oracle": 1024,
+                "umat_matches_oracle": 1024,
+                "vmatmul_matches_oracle_general": 1024,
+                "vmatmul_matches_oracle_left_cauchy_green": 1024
+              },
+              "cases_per_routine": {
+                "DETERMINANT": 2048,
+                "TRANSPOSE": 1024,
+                "UMAT": 1024,
+                "VMATMUL": 2048
+              },
+              "total_cases": 6144,
+              "tests_passed": 16,
+              "tests_failed": 2,
+              "bit_identical": [
+                {
+                  "test": "umat_matches_oracle",
+                  "identical": 46190,
+                  "total": 46190
+                }
+              ],
+              "counterexample": {
+                "routine": "TENF",
+                "entry": "M(3,1)",
+                "rust": -883.3675832254019,
+                "oracle": 0.0,
+                "tol": 0.0,
+                "inputs": {
+                  "V": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    -883.3675832254019
+                  ]
+                },
+                "property": "tenf_matches_oracle",
+                "evaluations": 1041,
+                "minimal_input": "[0.0, 0.0, 0.0, 0.0, 0.0, -883.3675832254019]"
+              }
+            },
+            "output_tail": "minimal failing input: [0.0, 0.0, 0.0, 0.0, 0.0, -883.3675832254019]\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\ntest transpose_matches_oracle ... transpose_matches_oracle: 1024 cases passed\nok\ntest umat_matches_oracle ... umat_matches_oracle: 1024 cases passed\numat_matches_oracle: bit-identical 46190/46190 output entries\nok\ntest vmatmul_matches_oracle_general ... vmatmul_matches_oracle_general: 1024 cases passed\nok\ntest vmatmul_matches_oracle_left_cauchy_green ... vmatmul_matches_oracle_left_cauchy_green: 1024 cases passed\nok\n\nfailures:\n\nfailures:\n    tenf_matches_oracle\n\ntest result: FAILED. 7 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.41s\n\nerror: test failed, to rerun pass `--test differential_pbt`\n   Doc-tests oracle_harness\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\nerror: 2 targets failed:\n    `--lib`\n    `--test differential_pbt`"
+          }
+        ],
+        "ok": false
+      }
+    },
+    {
+      "seq": 5,
+      "state": "SELF_HEAL",
+      "started_at": "2026-11-26T16:31:30.141Z",
+      "finished_at": "2026-11-26T16:31:30.142Z",
+      "duration_ms": 1,
+      "status": "ok",
+      "summary": "attempt 1/5: TENF M(3,1): Rust read v[5] (V(6)) = -883.3675832254019 but the oracle produced 0.0; oracle value equals V(5), the subscript in the F77 statement M(3,1)=V(5). 0-based index is 4, so v[5] -> v[4] (1-based subscript copied literally).",
+      "details": {
+        "attempt": 1,
+        "max_attempts": 5,
+        "counterexample_attempt": 1,
+        "applied": true,
+        "strategy": "index-offset",
+        "rationale": "TENF M(3,1): Rust read v[5] (V(6)) = -883.3675832254019 but the oracle produced 0.0; oracle value equals V(5), the subscript in the F77 statement M(3,1)=V(5). 0-based index is 4, so v[5] -> v[4] (1-based subscript copied literally).",
+        "file": "oracle-harness/src/lib.rs",
+        "line": 171,
+        "before": "        m[ix(3, 1)] = v[5]; // M(3,1)=V(5)",
+        "after": "        m[ix(3, 1)] = v[4]; // M(3,1)=V(5)",
+        "evidence": {
+          "input": "V",
+          "rust_read_index0": 5,
+          "rust_read_value": -883.3675832254019,
+          "oracle_value": 0.0,
+          "rust_value": -883.3675832254019,
+          "candidates_index0": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "f77_subscript": "V(5)"
+        },
+        "diff": "--- a/oracle-harness/src/lib.rs:171\n+++ b/oracle-harness/src/lib.rs:171\n@@ -1 +1 @@\n-        m[ix(3, 1)] = v[5]; // M(3,1)=V(5)\n+        m[ix(3, 1)] = v[4]; // M(3,1)=V(5)\n",
+        "matches_reference_translation": true
+      }
+    },
+    {
+      "seq": 6,
+      "state": "ORACLE_GATE",
+      "started_at": "2026-11-26T16:31:30.142Z",
+      "finished_at": "2026-11-26T16:31:32.128Z",
+      "duration_ms": 1985,
+      "status": "ok",
+      "summary": "gate attempt 2: gfortran ok, cargo_test ok, clippy ok, wasm_pack ok; 7168 proptest cases matched the gfortran oracle",
+      "details": {
+        "attempt": 2,
+        "checks": [
+          {
+            "check": "gfortran",
+            "cmd": "gfortran -std=legacy -ffp-contract=off -O2 -c kernels.f -o kernels.o",
+            "ok": true,
+            "returncode": 0,
+            "duration_ms": 114,
+            "metrics": {
+              "units": [
+                "TRANSPOSE",
+                "DETERMINANT",
+                "VMATMUL",
+                "TENF",
+                "UMAT"
+              ]
+            },
+            "output_tail": ""
+          },
+          {
+            "check": "cargo_test",
+            "cmd": "cargo test --no-fail-fast -- --nocapture --test-threads=1",
+            "ok": true,
+            "returncode": 0,
+            "duration_ms": 958,
+            "metrics": {
+              "properties": {
+                "determinant_matches_oracle_general": 1024,
+                "determinant_matches_oracle_near_singular": 1024,
+                "tenf_matches_oracle": 1024,
+                "transpose_matches_oracle": 1024,
+                "umat_matches_oracle": 1024,
+                "vmatmul_matches_oracle_general": 1024,
+                "vmatmul_matches_oracle_left_cauchy_green": 1024
+              },
+              "cases_per_routine": {
+                "DETERMINANT": 2048,
+                "TENF": 1024,
+                "TRANSPOSE": 1024,
+                "UMAT": 1024,
+                "VMATMUL": 2048
+              },
+              "total_cases": 7168,
+              "tests_passed": 18,
+              "tests_failed": 0,
+              "bit_identical": [
+                {
+                  "test": "umat_matches_oracle",
+                  "identical": 46849,
+                  "total": 46849
+                }
+              ],
+              "counterexample": null
+            },
+            "output_tail": "\ntest result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n     Running tests/differential_pbt.rs (/projects/sandbox/necrofort/orchestrator/.work/target/debug/deps/differential_pbt-72ddd29cc43ea426)\n\nrunning 8 tests\ntest determinant_matches_oracle_general ... determinant_matches_oracle_general: 1024 cases passed\nok\ntest determinant_matches_oracle_near_singular ... determinant_matches_oracle_near_singular: 1024 cases passed\nok\ntest oracle_is_linked_and_sane ... ok\ntest tenf_matches_oracle ... tenf_matches_oracle: 1024 cases passed\nok\ntest transpose_matches_oracle ... transpose_matches_oracle: 1024 cases passed\nok\ntest umat_matches_oracle ... umat_matches_oracle: 1024 cases passed\numat_matches_oracle: bit-identical 46849/46849 output entries\nok\ntest vmatmul_matches_oracle_general ... vmatmul_matches_oracle_general: 1024 cases passed\nok\ntest vmatmul_matches_oracle_left_cauchy_green ... vmatmul_matches_oracle_left_cauchy_green: 1024 cases passed\nok\n\ntest result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.46s\n\n   Doc-tests oracle_harness\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+          },
+          {
+            "check": "clippy",
+            "cmd": "cargo clippy --all-targets -- -D warnings",
+            "ok": true,
+            "returncode": 0,
+            "duration_ms": 304,
+            "metrics": {},
+            "output_tail": "    Checking oracle-harness v0.1.0 (/projects/sandbox/necrofort/orchestrator/.work/workspace/oracle-harness)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.26s"
+          },
+          {
+            "check": "wasm_pack",
+            "cmd": "wasm-pack build --target web",
+            "ok": true,
+            "returncode": 0,
+            "duration_ms": 603,
+            "metrics": {
+              "wasm_bytes": 31554,
+              "exports": [
+                "UmatResult",
+                "determinant",
+                "tenf",
+                "transpose",
+                "umat",
+                "vmatmul"
+              ]
+            },
+            "output_tail": "[INFO]: \ud83c\udfaf  Checking for the Wasm target...\n[INFO]: \ud83c\udf00  Compiling to Wasm...\n   Compiling oracle-harness v0.1.0 (/projects/sandbox/necrofort/orchestrator/.work/workspace/oracle-harness)\n    Finished `release` profile [optimized] target(s) in 0.38s\n[INFO]: \u2b07\ufe0f  Installing wasm-bindgen...\n[INFO]: Optimizing wasm binaries with `wasm-opt`...\n[INFO]: \u2728   Done in 0.52s\n[INFO]: \ud83d\udce6   Your wasm pkg is ready to publish at /projects/sandbox/necrofort/orchestrator/.work/workspace/oracle-harness/pkg."
+          }
+        ],
+        "ok": true
+      }
+    },
+    {
+      "seq": 7,
+      "state": "PR",
+      "started_at": "2026-11-26T16:31:32.129Z",
+      "finished_at": "2026-11-26T16:31:32.988Z",
+      "duration_ms": 858,
+      "status": "ok",
+      "summary": "PR open: https://github.com/hvmathan/necrofort/pull/2",
+      "details": {
+        "mode": "status",
+        "payload": {
+          "title": "NecroFort: resurrect TRANSPOSE, DETERMINANT, VMATMUL, TENF, UMAT",
+          "body": "Automated by `orchestrator/graph.py`.\n\n- Routines: TRANSPOSE, DETERMINANT, VMATMUL, TENF, UMAT\n- proptest cases matched against gfortran: 7168\n- Gate attempts: 2, self-heals: 1\n  - heal 1: TENF M(3,1): Rust read v[5] (V(6)) = -883.3675832254019 but the oracle produced 0.0; oracle value equals V(5), the subscript in the F77 statement M(3,1)=V(5). 0-based index is 4, so v[5] -> v[4] (1-based subscript copied literally).",
+          "base": "main",
+          "head": null,
+          "draft": true
+        },
+        "number": 2,
+        "html_url": "https://github.com/hvmathan/necrofort/pull/2",
+        "state": "open",
+        "draft": true,
+        "title": "feat(phase2): UMAT resurrection, Python orchestrator with self-heal, React dashboard + WASM lab",
+        "head": "feat/phase2-orchestrator-and-ui",
+        "head_sha": "552d2907f6e211036653d536aa8ba79f96daa878",
+        "base": "main",
+        "updated_at": "2026-11-26T16:31:22Z"
+      }
+    }
+  ],
+  "planted_bug": {
+    "routine": "TENF",
+    "file": "oracle-harness/src/lib.rs",
+    "line": 171,
+    "before": "m[ix(3, 1)] = v[4]; // M(3,1)=V(5)",
+    "after": "m[ix(3, 1)] = v[5]; // M(3,1)=V(5)",
+    "description": "0-based vs 1-based slip: the F77 statement M(3,1)=V(5) was transmuted with the Fortran subscript copied literally, so Rust reads v[5] (= V(6)) instead of v[4]. It compiles, passes clippy, and stays in bounds for N=6, so only the differential test can catch it."
+  },
+  "counterexamples": [
+    {
+      "attempt": 1,
+      "routine": "TENF",
+      "entry": "M(3,1)",
+      "rust": -883.3675832254019,
+      "oracle": 0.0,
+      "tol": 0.0,
+      "inputs": {
+        "V": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -883.3675832254019
+        ]
+      },
+      "property": "tenf_matches_oracle",
+      "evaluations": 1041,
+      "minimal_input": "[0.0, 0.0, 0.0, 0.0, 0.0, -883.3675832254019]"
+    }
+  ],
+  "heals": [
+    {
+      "attempt": 1,
+      "max_attempts": 5,
+      "counterexample_attempt": 1,
+      "applied": true,
+      "strategy": "index-offset",
+      "rationale": "TENF M(3,1): Rust read v[5] (V(6)) = -883.3675832254019 but the oracle produced 0.0; oracle value equals V(5), the subscript in the F77 statement M(3,1)=V(5). 0-based index is 4, so v[5] -> v[4] (1-based subscript copied literally).",
+      "file": "oracle-harness/src/lib.rs",
+      "line": 171,
+      "before": "        m[ix(3, 1)] = v[5]; // M(3,1)=V(5)",
+      "after": "        m[ix(3, 1)] = v[4]; // M(3,1)=V(5)",
+      "evidence": {
+        "input": "V",
+        "rust_read_index0": 5,
+        "rust_read_value": -883.3675832254019,
+        "oracle_value": 0.0,
+        "rust_value": -883.3675832254019,
+        "candidates_index0": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "f77_subscript": "V(5)"
+      },
+      "diff": "--- a/oracle-harness/src/lib.rs:171\n+++ b/oracle-harness/src/lib.rs:171\n@@ -1 +1 @@\n-        m[ix(3, 1)] = v[5]; // M(3,1)=V(5)\n+        m[ix(3, 1)] = v[4]; // M(3,1)=V(5)\n",
+      "matches_reference_translation": true
+    }
+  ],
+  "gate_runs": [
+    {
+      "attempt": 1,
+      "checks": [
+        {
+          "check": "gfortran",
+          "cmd": "gfortran -std=legacy -ffp-contract=off -O2 -c kernels.f -o kernels.o",
+          "ok": true,
+          "returncode": 0,
+          "duration_ms": 117,
+          "metrics": {
+            "units": [
+              "TRANSPOSE",
+              "DETERMINANT",
+              "VMATMUL",
+              "TENF",
+              "UMAT"
+            ]
+          },
+          "output_tail": ""
+        },
+        {
+          "check": "cargo_test",
+          "cmd": "cargo test --no-fail-fast -- --nocapture --test-threads=1",
+          "ok": false,
+          "returncode": 101,
+          "duration_ms": 915,
+          "metrics": {
+            "properties": {
+              "determinant_matches_oracle_general": 1024,
+              "determinant_matches_oracle_near_singular": 1024,
+              "transpose_matches_oracle": 1024,
+              "umat_matches_oracle": 1024,
+              "vmatmul_matches_oracle_general": 1024,
+              "vmatmul_matches_oracle_left_cauchy_green": 1024
+            },
+            "cases_per_routine": {
+              "DETERMINANT": 2048,
+              "TRANSPOSE": 1024,
+              "UMAT": 1024,
+              "VMATMUL": 2048
+            },
+            "total_cases": 6144,
+            "tests_passed": 16,
+            "tests_failed": 2,
+            "bit_identical": [
+              {
+                "test": "umat_matches_oracle",
+                "identical": 46190,
+                "total": 46190
+              }
+            ],
+            "counterexample": {
+              "routine": "TENF",
+              "entry": "M(3,1)",
+              "rust": -883.3675832254019,
+              "oracle": 0.0,
+              "tol": 0.0,
+              "inputs": {
+                "V": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  -883.3675832254019
+                ]
+              },
+              "property": "tenf_matches_oracle",
+              "evaluations": 1041,
+              "minimal_input": "[0.0, 0.0, 0.0, 0.0, 0.0, -883.3675832254019]"
+            }
+          },
+          "output_tail": "minimal failing input: [0.0, 0.0, 0.0, 0.0, 0.0, -883.3675832254019]\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\nFAILED\ntest transpose_matches_oracle ... transpose_matches_oracle: 1024 cases passed\nok\ntest umat_matches_oracle ... umat_matches_oracle: 1024 cases passed\numat_matches_oracle: bit-identical 46190/46190 output entries\nok\ntest vmatmul_matches_oracle_general ... vmatmul_matches_oracle_general: 1024 cases passed\nok\ntest vmatmul_matches_oracle_left_cauchy_green ... vmatmul_matches_oracle_left_cauchy_green: 1024 cases passed\nok\n\nfailures:\n\nfailures:\n    tenf_matches_oracle\n\ntest result: FAILED. 7 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.41s\n\nerror: test failed, to rerun pass `--test differential_pbt`\n   Doc-tests oracle_harness\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\nerror: 2 targets failed:\n    `--lib`\n    `--test differential_pbt`"
+        }
+      ],
+      "ok": false
+    },
+    {
+      "attempt": 2,
+      "checks": [
+        {
+          "check": "gfortran",
+          "cmd": "gfortran -std=legacy -ffp-contract=off -O2 -c kernels.f -o kernels.o",
+          "ok": true,
+          "returncode": 0,
+          "duration_ms": 114,
+          "metrics": {
+            "units": [
+              "TRANSPOSE",
+              "DETERMINANT",
+              "VMATMUL",
+              "TENF",
+              "UMAT"
+            ]
+          },
+          "output_tail": ""
+        },
+        {
+          "check": "cargo_test",
+          "cmd": "cargo test --no-fail-fast -- --nocapture --test-threads=1",
+          "ok": true,
+          "returncode": 0,
+          "duration_ms": 958,
+          "metrics": {
+            "properties": {
+              "determinant_matches_oracle_general": 1024,
+              "determinant_matches_oracle_near_singular": 1024,
+              "tenf_matches_oracle": 1024,
+              "transpose_matches_oracle": 1024,
+              "umat_matches_oracle": 1024,
+              "vmatmul_matches_oracle_general": 1024,
+              "vmatmul_matches_oracle_left_cauchy_green": 1024
+            },
+            "cases_per_routine": {
+              "DETERMINANT": 2048,
+              "TENF": 1024,
+              "TRANSPOSE": 1024,
+              "UMAT": 1024,
+              "VMATMUL": 2048
+            },
+            "total_cases": 7168,
+            "tests_passed": 18,
+            "tests_failed": 0,
+            "bit_identical": [
+              {
+                "test": "umat_matches_oracle",
+                "identical": 46849,
+                "total": 46849
+              }
+            ],
+            "counterexample": null
+          },
+          "output_tail": "\ntest result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n     Running tests/differential_pbt.rs (/projects/sandbox/necrofort/orchestrator/.work/target/debug/deps/differential_pbt-72ddd29cc43ea426)\n\nrunning 8 tests\ntest determinant_matches_oracle_general ... determinant_matches_oracle_general: 1024 cases passed\nok\ntest determinant_matches_oracle_near_singular ... determinant_matches_oracle_near_singular: 1024 cases passed\nok\ntest oracle_is_linked_and_sane ... ok\ntest tenf_matches_oracle ... tenf_matches_oracle: 1024 cases passed\nok\ntest transpose_matches_oracle ... transpose_matches_oracle: 1024 cases passed\nok\ntest umat_matches_oracle ... umat_matches_oracle: 1024 cases passed\numat_matches_oracle: bit-identical 46849/46849 output entries\nok\ntest vmatmul_matches_oracle_general ... vmatmul_matches_oracle_general: 1024 cases passed\nok\ntest vmatmul_matches_oracle_left_cauchy_green ... vmatmul_matches_oracle_left_cauchy_green: 1024 cases passed\nok\n\ntest result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.46s\n\n   Doc-tests oracle_harness\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+        },
+        {
+          "check": "clippy",
+          "cmd": "cargo clippy --all-targets -- -D warnings",
+          "ok": true,
+          "returncode": 0,
+          "duration_ms": 304,
+          "metrics": {},
+          "output_tail": "    Checking oracle-harness v0.1.0 (/projects/sandbox/necrofort/orchestrator/.work/workspace/oracle-harness)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.26s"
+        },
+        {
+          "check": "wasm_pack",
+          "cmd": "wasm-pack build --target web",
+          "ok": true,
+          "returncode": 0,
+          "duration_ms": 603,
+          "metrics": {
+            "wasm_bytes": 31554,
+            "exports": [
+              "UmatResult",
+              "determinant",
+              "tenf",
+              "transpose",
+              "umat",
+              "vmatmul"
+            ]
+          },
+          "output_tail": "[INFO]: \ud83c\udfaf  Checking for the Wasm target...\n[INFO]: \ud83c\udf00  Compiling to Wasm...\n   Compiling oracle-harness v0.1.0 (/projects/sandbox/necrofort/orchestrator/.work/workspace/oracle-harness)\n    Finished `release` profile [optimized] target(s) in 0.38s\n[INFO]: \u2b07\ufe0f  Installing wasm-bindgen...\n[INFO]: Optimizing wasm binaries with `wasm-opt`...\n[INFO]: \u2728   Done in 0.52s\n[INFO]: \ud83d\udce6   Your wasm pkg is ready to publish at /projects/sandbox/necrofort/orchestrator/.work/workspace/oracle-harness/pkg."
+        }
+      ],
+      "ok": true
+    }
+  ],
+  "parity": {
+    "total_cases": 7168,
+    "properties": {
+      "determinant_matches_oracle_general": 1024,
+      "determinant_matches_oracle_near_singular": 1024,
+      "tenf_matches_oracle": 1024,
+      "transpose_matches_oracle": 1024,
+      "umat_matches_oracle": 1024,
+      "vmatmul_matches_oracle_general": 1024,
+      "vmatmul_matches_oracle_left_cauchy_green": 1024
+    },
+    "cases_per_routine": {
+      "DETERMINANT": 2048,
+      "TENF": 1024,
+      "TRANSPOSE": 1024,
+      "UMAT": 1024,
+      "VMATMUL": 2048
+    },
+    "bit_identical": [
+      {
+        "test": "umat_matches_oracle",
+        "identical": 46849,
+        "total": 46849
+      }
+    ],
+    "tests_passed": 18,
+    "routines": [
+      "TRANSPOSE",
+      "DETERMINANT",
+      "VMATMUL",
+      "TENF",
+      "UMAT"
+    ]
+  },
+  "pr": {
+    "mode": "status",
+    "payload": {
+      "title": "NecroFort: resurrect TRANSPOSE, DETERMINANT, VMATMUL, TENF, UMAT",
+      "body": "Automated by `orchestrator/graph.py`.\n\n- Routines: TRANSPOSE, DETERMINANT, VMATMUL, TENF, UMAT\n- proptest cases matched against gfortran: 7168\n- Gate attempts: 2, self-heals: 1\n  - heal 1: TENF M(3,1): Rust read v[5] (V(6)) = -883.3675832254019 but the oracle produced 0.0; oracle value equals V(5), the subscript in the F77 statement M(3,1)=V(5). 0-based index is 4, so v[5] -> v[4] (1-based subscript copied literally).",
+      "base": "main",
+      "head": null,
+      "draft": true
+    },
+    "number": 2,
+    "html_url": "https://github.com/hvmathan/necrofort/pull/2",
+    "state": "open",
+    "draft": true,
+    "title": "feat(phase2): UMAT resurrection, Python orchestrator with self-heal, React dashboard + WASM lab",
+    "head": "feat/phase2-orchestrator-and-ui",
+    "head_sha": "552d2907f6e211036653d536aa8ba79f96daa878",
+    "base": "main",
+    "updated_at": "2026-11-26T16:31:22Z"
+  },
+  "blocker": null
+}

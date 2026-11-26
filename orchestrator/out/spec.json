@@ -1,0 +1,2303 @@
+{
+  "schema": "necrofort.kiro_spec/v1",
+  "source": {
+    "path": "targets/bioumat/SUBROUTINES.FOR",
+    "sha256": "edabea62784338bd338a19620dd91d4c8a23084783c034205ea317ae83150bd5",
+    "bytes": 15790,
+    "lines": 463,
+    "line_endings": "CRLF",
+    "comment_lines": 107,
+    "code_lines": 354
+  },
+  "fixed_form": {
+    "label_cols": "1-5",
+    "continuation_col": 6,
+    "statement_cols": "7-72",
+    "ignored_cols": "73-80"
+  },
+  "includes_resolved": {
+    "ABA_PARAM.INC": "builtin stand-in (Abaqus ABA_PARAM.INC)"
+  },
+  "units": [
+    {
+      "name": "SDVINI",
+      "kind": "SUBROUTINE",
+      "line_start": 9,
+      "line_end": 99,
+      "signature": "SUBROUTINE SDVINI(STATEV,COORDS,NSTATV,NCRDS,NOEL,NPT,LAYER,KSPT)",
+      "args": [
+        {
+          "name": "STATEV",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": [
+            "NSTATV"
+          ],
+          "intent": "out",
+          "value": null,
+          "rust_type": "&mut [f64] /* NSTATV */"
+        },
+        {
+          "name": "COORDS",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": [
+            "NCRDS"
+          ],
+          "intent": "in",
+          "value": null,
+          "rust_type": "&[f64] /* NCRDS */"
+        },
+        {
+          "name": "NSTATV",
+          "type": "INTEGER",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "in",
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "NCRDS",
+          "type": "INTEGER",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "unused",
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "NOEL",
+          "type": "INTEGER",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "unused",
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "NPT",
+          "type": "INTEGER",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "unused",
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "LAYER",
+          "type": "INTEGER",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "unused",
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "KSPT",
+          "type": "INTEGER",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "unused",
+          "value": null,
+          "rust_type": "i32"
+        }
+      ],
+      "includes": [
+        "ABA_PARAM.INC"
+      ],
+      "implicit_rules": [
+        "A-H: REAL*8",
+        "I-N: INTEGER",
+        "O-Z: REAL*8"
+      ],
+      "symbols": [
+        {
+          "name": "CONS1",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "parameter",
+          "dims": null,
+          "intent": null,
+          "value": "5.235987755983D0",
+          "rust_type": "f64"
+        },
+        {
+          "name": "CONS2",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "parameter",
+          "dims": null,
+          "intent": null,
+          "value": "2.61799387799D0",
+          "rust_type": "f64"
+        },
+        {
+          "name": "DEPTH",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "FOUR",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "parameter",
+          "dims": null,
+          "intent": null,
+          "value": "4.D0",
+          "rust_type": "f64"
+        },
+        {
+          "name": "G",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": [
+            "10"
+          ],
+          "intent": null,
+          "value": null,
+          "rust_type": "&[f64] /* 10 */"
+        },
+        {
+          "name": "I",
+          "type": "INTEGER",
+          "typing": "implicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "NPRECD",
+          "type": "INTEGER",
+          "typing": "implicit",
+          "role": "parameter",
+          "dims": null,
+          "intent": null,
+          "value": "2",
+          "rust_type": "i32"
+        },
+        {
+          "name": "ONE",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "parameter",
+          "dims": null,
+          "intent": null,
+          "value": "1.D0",
+          "rust_type": "f64"
+        },
+        {
+          "name": "PI",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "parameter",
+          "dims": null,
+          "intent": null,
+          "value": "3.14159265359D0",
+          "rust_type": "f64"
+        },
+        {
+          "name": "RPHI",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "RTHETA",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "TEN",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "parameter",
+          "dims": null,
+          "intent": null,
+          "value": "10.D0",
+          "rust_type": "f64"
+        },
+        {
+          "name": "TWO",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "parameter",
+          "dims": null,
+          "intent": null,
+          "value": "2.D0",
+          "rust_type": "f64"
+        },
+        {
+          "name": "ZERO",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "parameter",
+          "dims": null,
+          "intent": null,
+          "value": "0.D0",
+          "rust_type": "f64"
+        }
+      ],
+      "common_blocks": [],
+      "calls": [
+        {
+          "name": "RANDOM",
+          "line": 40,
+          "args": [],
+          "valid": false
+        }
+      ],
+      "labels": {},
+      "gotos": [],
+      "do_loops": [
+        {
+          "line": 81,
+          "var": "I",
+          "label": null,
+          "bounds": "10, NSTATV"
+        }
+      ],
+      "hazards": [
+        {
+          "severity": "info",
+          "code": "SINGLE_PRECISION_LITERAL",
+          "line": 38,
+          "message": "REAL (f32) literal(s) 1.4, 1.1, 0.59 in a REAL*8 unit: rounded to single precision before promotion; the Rust port must use `1.4_f32 as f64`"
+        },
+        {
+          "severity": "error",
+          "code": "INVALID_CALL_NAME",
+          "line": 40,
+          "message": "`CALL RANDOM-NUMBER(RPHI)` is not valid Fortran: '-' cannot follow a subroutine name (did the author mean RANDOM_NUMBER?)"
+        },
+        {
+          "severity": "info",
+          "code": "SINGLE_PRECISION_LITERAL",
+          "line": 43,
+          "message": "REAL (f32) literal(s) 0.3 in a REAL*8 unit: rounded to single precision before promotion; the Rust port must use `0.3_f32 as f64`"
+        },
+        {
+          "severity": "info",
+          "code": "SINGLE_PRECISION_LITERAL",
+          "line": 46,
+          "message": "REAL (f32) literal(s) 0.3 in a REAL*8 unit: rounded to single precision before promotion; the Rust port must use `0.3_f32 as f64`"
+        },
+        {
+          "severity": "error",
+          "code": "LOGICAL_OP_ON_INTEGERS",
+          "line": 56,
+          "message": "`(5.OR.6)` applies .OR. to INTEGER operands; F77 requires LOGICAL operands (probably meant `X.EQ.a .OR. X.EQ.b`)"
+        },
+        {
+          "severity": "info",
+          "code": "SINGLE_PRECISION_LITERAL",
+          "line": 62,
+          "message": "REAL (f32) literal(s) 0.1, 0.2 in a REAL*8 unit: rounded to single precision before promotion; the Rust port must use `0.1_f32 as f64`"
+        },
+        {
+          "severity": "info",
+          "code": "SINGLE_PRECISION_LITERAL",
+          "line": 64,
+          "message": "REAL (f32) literal(s) 0.05, 0.2 in a REAL*8 unit: rounded to single precision before promotion; the Rust port must use `0.05_f32 as f64`"
+        }
+      ],
+      "statement_count": 53,
+      "acceptance": [
+        "WHEN the Rust port of SDVINI is called with bounded finite inputs THEN it SHALL match the gfortran -std=legacy oracle on STATEV for at least 1,024 proptest cases.",
+        "IF STATEV(NSTATV) is shorter than its declared size THEN the Rust port SHALL return an error instead of accessing it out of bounds.",
+        "IF COORDS(NCRDS) is shorter than its declared size THEN the Rust port SHALL return an error instead of accessing it out of bounds.",
+        "The hazard INVALID_CALL_NAME at line 40 SHALL be resolved or the unit SHALL stay out of scope.",
+        "The hazard LOGICAL_OP_ON_INTEGERS at line 56 SHALL be resolved or the unit SHALL stay out of scope."
+      ]
+    },
+    {
+      "name": "FLOW",
+      "kind": "SUBROUTINE",
+      "line_start": 104,
+      "line_end": 116,
+      "signature": "SUBROUTINE FLOW(H,SINK,U,KSTEP,KINC,TIME,NOEL,NPT,COORDS,JLTYP,SNAME)",
+      "args": [
+        {
+          "name": "H",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "out",
+          "value": null,
+          "rust_type": "&mut f64"
+        },
+        {
+          "name": "SINK",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "out",
+          "value": null,
+          "rust_type": "&mut f64"
+        },
+        {
+          "name": "U",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "unused",
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "KSTEP",
+          "type": "INTEGER",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "unused",
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "KINC",
+          "type": "INTEGER",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "unused",
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "TIME",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": [
+            "2"
+          ],
+          "intent": "unused",
+          "value": null,
+          "rust_type": "&[f64] /* 2 */"
+        },
+        {
+          "name": "NOEL",
+          "type": "INTEGER",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "unused",
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "NPT",
+          "type": "INTEGER",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "unused",
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "COORDS",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": [
+            "3"
+          ],
+          "intent": "in",
+          "value": null,
+          "rust_type": "&[f64] /* 3 */"
+        },
+        {
+          "name": "JLTYP",
+          "type": "INTEGER",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "unused",
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "SNAME",
+          "type": "CHARACTER*80",
+          "typing": "explicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "unused",
+          "value": null,
+          "rust_type": "[u8; 80]"
+        }
+      ],
+      "includes": [
+        "ABA_PARAM.INC"
+      ],
+      "implicit_rules": [
+        "A-H: REAL*8",
+        "I-N: INTEGER",
+        "O-Z: REAL*8"
+      ],
+      "symbols": [
+        {
+          "name": "NPRECD",
+          "type": "INTEGER",
+          "typing": "implicit",
+          "role": "parameter",
+          "dims": null,
+          "intent": null,
+          "value": "2",
+          "rust_type": "i32"
+        }
+      ],
+      "common_blocks": [],
+      "calls": [],
+      "labels": {},
+      "gotos": [],
+      "do_loops": [],
+      "hazards": [],
+      "statement_count": 9,
+      "acceptance": [
+        "WHEN the Rust port of FLOW is called with bounded finite inputs THEN it SHALL match the gfortran -std=legacy oracle on H, SINK for at least 1,024 proptest cases."
+      ]
+    },
+    {
+      "name": "UMAT",
+      "kind": "SUBROUTINE",
+      "line_start": 122,
+      "line_end": 392,
+      "signature": "SUBROUTINE UMAT(STRESS,STATEV,DDSDDE,SSE,SPD,SCD,RPL,DDSDDT,DRPLDE,DRPLDT,STRAN,DSTRAN,TIME,DTIME,TEMP,DTEMP,PREDEF,DPRED,CMNAME,NDI,NSHR,NTENS,NSTATV,PROPS,NPROPS,COORDS,DROT,PNEWDT,CELENT,DFGRD0,DFGRD1,NOEL,NPT,LAYER,KSPT,JSTEP,KINC)",
+      "args": [
+        {
+          "name": "STRESS",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": [
+            "NTENS"
+          ],
+          "intent": "out",
+          "value": null,
+          "rust_type": "&mut [f64] /* NTENS */"
+        },
+        {
+          "name": "STATEV",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": [
+            "NSTATV"
+          ],
+          "intent": "inout",
+          "value": null,
+          "rust_type": "&mut [f64] /* NSTATV */"
+        },
+        {
+          "name": "DDSDDE",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": [
+            "NTENS",
+            "NTENS"
+          ],
+          "intent": "out",
+          "value": null,
+          "rust_type": "&mut [f64] /* NTENSxNTENS, column-major */"
+        },
+        {
+          "name": "SSE",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "unused",
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "SPD",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "unused",
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "SCD",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "unused",
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "RPL",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "unused",
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "DDSDDT",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": [
+            "NTENS"
+          ],
+          "intent": "unused",
+          "value": null,
+          "rust_type": "&[f64] /* NTENS */"
+        },
+        {
+          "name": "DRPLDE",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": [
+            "NTENS"
+          ],
+          "intent": "unused",
+          "value": null,
+          "rust_type": "&[f64] /* NTENS */"
+        },
+        {
+          "name": "DRPLDT",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "unused",
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "STRAN",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": [
+            "NTENS"
+          ],
+          "intent": "unused",
+          "value": null,
+          "rust_type": "&[f64] /* NTENS */"
+        },
+        {
+          "name": "DSTRAN",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": [
+            "NTENS"
+          ],
+          "intent": "unused",
+          "value": null,
+          "rust_type": "&[f64] /* NTENS */"
+        },
+        {
+          "name": "TIME",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": [
+            "2"
+          ],
+          "intent": "unused",
+          "value": null,
+          "rust_type": "&[f64] /* 2 */"
+        },
+        {
+          "name": "DTIME",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "unused",
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "TEMP",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "unused",
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "DTEMP",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "unused",
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "PREDEF",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": [
+            "1"
+          ],
+          "intent": "unused",
+          "value": null,
+          "rust_type": "&[f64] /* 1 */"
+        },
+        {
+          "name": "DPRED",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": [
+            "1"
+          ],
+          "intent": "unused",
+          "value": null,
+          "rust_type": "&[f64] /* 1 */"
+        },
+        {
+          "name": "CMNAME",
+          "type": "CHARACTER*80",
+          "typing": "explicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "unused",
+          "value": null,
+          "rust_type": "[u8; 80]"
+        },
+        {
+          "name": "NDI",
+          "type": "INTEGER",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "unused",
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "NSHR",
+          "type": "INTEGER",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "unused",
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "NTENS",
+          "type": "INTEGER",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "in",
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "NSTATV",
+          "type": "INTEGER",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "in",
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "PROPS",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": [
+            "NPROPS"
+          ],
+          "intent": "unused",
+          "value": null,
+          "rust_type": "&[f64] /* NPROPS */"
+        },
+        {
+          "name": "NPROPS",
+          "type": "INTEGER",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "unused",
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "COORDS",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": [
+            "3"
+          ],
+          "intent": "unused",
+          "value": null,
+          "rust_type": "&[f64] /* 3 */"
+        },
+        {
+          "name": "DROT",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": [
+            "3",
+            "3"
+          ],
+          "intent": "unused",
+          "value": null,
+          "rust_type": "&[f64] /* 3x3, column-major */"
+        },
+        {
+          "name": "PNEWDT",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "unused",
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "CELENT",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "unused",
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "DFGRD0",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": [
+            "3",
+            "3"
+          ],
+          "intent": "unused",
+          "value": null,
+          "rust_type": "&[f64] /* 3x3, column-major */"
+        },
+        {
+          "name": "DFGRD1",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": [
+            "3",
+            "3"
+          ],
+          "intent": "inout",
+          "value": null,
+          "rust_type": "&mut [f64] /* 3x3, column-major */"
+        },
+        {
+          "name": "NOEL",
+          "type": "INTEGER",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "unused",
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "NPT",
+          "type": "INTEGER",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "unused",
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "LAYER",
+          "type": "INTEGER",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "unused",
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "KSPT",
+          "type": "INTEGER",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "unused",
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "JSTEP",
+          "type": "INTEGER",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": [
+            "4"
+          ],
+          "intent": "unused",
+          "value": null,
+          "rust_type": "&[i32] /* 4 */"
+        },
+        {
+          "name": "KINC",
+          "type": "INTEGER",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "unused",
+          "value": null,
+          "rust_type": "i32"
+        }
+      ],
+      "includes": [
+        "ABA_PARAM.INC"
+      ],
+      "implicit_rules": [
+        "A-H: REAL*8",
+        "I-N: INTEGER",
+        "O-Z: REAL*8"
+      ],
+      "symbols": [
+        {
+          "name": "ALPHA1",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "ALPHA2",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "BVEC",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": [
+            "NTENS"
+          ],
+          "intent": null,
+          "value": null,
+          "rust_type": "&[f64] /* NTENS */"
+        },
+        {
+          "name": "C",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "CONST",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "parameter",
+          "dims": null,
+          "intent": null,
+          "value": "0.4342944819D0",
+          "rust_type": "f64"
+        },
+        {
+          "name": "CSTR",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "DDS",
+          "type": "INTEGER",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "DELTAV",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": [
+            "NTENS"
+          ],
+          "intent": null,
+          "value": null,
+          "rust_type": "&[f64] /* NTENS */"
+        },
+        {
+          "name": "DET",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "DFGRD",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": [
+            "3",
+            "3"
+          ],
+          "intent": null,
+          "value": null,
+          "rust_type": "&[f64] /* 3x3, column-major */"
+        },
+        {
+          "name": "E1MP",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "E2MP",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "EP",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "EPS",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "FF",
+          "type": "INTEGER",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "FFD",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "parameter",
+          "dims": null,
+          "intent": null,
+          "value": "0.57735026919D0",
+          "rust_type": "f64"
+        },
+        {
+          "name": "FOUR",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "parameter",
+          "dims": null,
+          "intent": null,
+          "value": "4.D0",
+          "rust_type": "f64"
+        },
+        {
+          "name": "FV1",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": [
+            "3"
+          ],
+          "intent": null,
+          "value": null,
+          "rust_type": "&[f64] /* 3 */"
+        },
+        {
+          "name": "GAG",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "GM",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "HALF",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "parameter",
+          "dims": null,
+          "intent": null,
+          "value": "5.D-1",
+          "rust_type": "f64"
+        },
+        {
+          "name": "HH",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "I",
+          "type": "INTEGER",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "IDENT",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": [
+            "3",
+            "3"
+          ],
+          "intent": null,
+          "value": null,
+          "rust_type": "&[f64] /* 3x3, column-major */"
+        },
+        {
+          "name": "IGAGD",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "INDEX",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": [
+            "2",
+            "6"
+          ],
+          "intent": null,
+          "value": null,
+          "rust_type": "&[f64] /* 2x6, column-major */"
+        },
+        {
+          "name": "J",
+          "type": "INTEGER",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "K",
+          "type": "INTEGER",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "K1",
+          "type": "INTEGER",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "K1MP",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "K2",
+          "type": "INTEGER",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "K3",
+          "type": "INTEGER",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "K4",
+          "type": "INTEGER",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "K5",
+          "type": "INTEGER",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "K6",
+          "type": "INTEGER",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "KKK",
+          "type": "INTEGER",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "L",
+          "type": "INTEGER",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "LANDA",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "M",
+          "type": "INTEGER",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "N",
+          "type": "INTEGER",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "NEWV1",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": [
+            "3"
+          ],
+          "intent": null,
+          "value": null,
+          "rust_type": "&[f64] /* 3 */"
+        },
+        {
+          "name": "NPRECD",
+          "type": "INTEGER",
+          "typing": "implicit",
+          "role": "parameter",
+          "dims": null,
+          "intent": null,
+          "value": "2",
+          "rust_type": "i32"
+        },
+        {
+          "name": "NS0",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "NSTR",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": [
+            "NTENS"
+          ],
+          "intent": null,
+          "value": null,
+          "rust_type": "&[f64] /* NTENS */"
+        },
+        {
+          "name": "NVEC0",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": [
+            "27"
+          ],
+          "intent": null,
+          "value": null,
+          "rust_type": "&[f64] /* 27 */"
+        },
+        {
+          "name": "ONE",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "parameter",
+          "dims": null,
+          "intent": null,
+          "value": "1.D0",
+          "rust_type": "f64"
+        },
+        {
+          "name": "R",
+          "type": "INTEGER",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "R2P2",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "parameter",
+          "dims": null,
+          "intent": null,
+          "value": "0.7071067811865D0",
+          "rust_type": "f64"
+        },
+        {
+          "name": "R3P3",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "parameter",
+          "dims": null,
+          "intent": null,
+          "value": "0.5773502691896D0",
+          "rust_type": "f64"
+        },
+        {
+          "name": "RH",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "SIX",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "parameter",
+          "dims": null,
+          "intent": null,
+          "value": "6.D0",
+          "rust_type": "f64"
+        },
+        {
+          "name": "STATE",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": [
+            "NSTATV"
+          ],
+          "intent": null,
+          "value": null,
+          "rust_type": "&[f64] /* NSTATV */"
+        },
+        {
+          "name": "STR",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "STRG",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": [
+            "NTENS",
+            "NTENS"
+          ],
+          "intent": null,
+          "value": null,
+          "rust_type": "&[f64] /* NTENSxNTENS, column-major */"
+        },
+        {
+          "name": "STRS",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": [
+            "NTENS"
+          ],
+          "intent": null,
+          "value": null,
+          "rust_type": "&[f64] /* NTENS */"
+        },
+        {
+          "name": "TEN",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "parameter",
+          "dims": null,
+          "intent": null,
+          "value": "10D0",
+          "rust_type": "f64"
+        },
+        {
+          "name": "THREE",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "parameter",
+          "dims": null,
+          "intent": null,
+          "value": "3.D0",
+          "rust_type": "f64"
+        },
+        {
+          "name": "TRANF",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": [
+            "3",
+            "3"
+          ],
+          "intent": null,
+          "value": null,
+          "rust_type": "&[f64] /* 3x3, column-major */"
+        },
+        {
+          "name": "TT",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "parameter",
+          "dims": null,
+          "intent": null,
+          "value": "7.D0",
+          "rust_type": "f64"
+        },
+        {
+          "name": "TWO",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "parameter",
+          "dims": null,
+          "intent": null,
+          "value": "2.D0",
+          "rust_type": "f64"
+        },
+        {
+          "name": "VV",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": [
+            "NTENS"
+          ],
+          "intent": null,
+          "value": null,
+          "rust_type": "&[f64] /* NTENS */"
+        },
+        {
+          "name": "W1",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "W2",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "W3",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "W4",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "W5",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "W6",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "f64"
+        },
+        {
+          "name": "ZERO",
+          "type": "REAL*8",
+          "typing": "implicit",
+          "role": "parameter",
+          "dims": null,
+          "intent": null,
+          "value": "0.D0",
+          "rust_type": "f64"
+        }
+      ],
+      "common_blocks": [],
+      "calls": [
+        {
+          "name": "TRANSPOSE",
+          "line": 265,
+          "args": [
+            "DFGRD1",
+            "TRANF"
+          ],
+          "valid": true
+        },
+        {
+          "name": "VMATMUL",
+          "line": 266,
+          "args": [
+            "DFGRD1",
+            "TRANF",
+            "NTENS",
+            "BVEC"
+          ],
+          "valid": true
+        },
+        {
+          "name": "DETERMINANT",
+          "line": 267,
+          "args": [
+            "DFGRD1",
+            "DET"
+          ],
+          "valid": true
+        },
+        {
+          "name": "TENF",
+          "line": 338,
+          "args": [
+            "STRESS",
+            "NTENS",
+            "STRG"
+          ],
+          "valid": true
+        }
+      ],
+      "labels": {
+        "80": 247,
+        "90": 254
+      },
+      "gotos": [
+        {
+          "line": 368,
+          "label": 80,
+          "kind": "unconditional",
+          "target_line": 247,
+          "direction": "backward"
+        },
+        {
+          "line": 380,
+          "label": 90,
+          "kind": "unconditional",
+          "target_line": 254,
+          "direction": "backward"
+        }
+      ],
+      "do_loops": [
+        {
+          "line": 163,
+          "var": "I",
+          "label": null,
+          "bounds": "1, 3"
+        },
+        {
+          "line": 165,
+          "var": "J",
+          "label": null,
+          "bounds": "1, 3"
+        },
+        {
+          "line": 171,
+          "var": "I",
+          "label": null,
+          "bounds": "4,NTENS"
+        },
+        {
+          "line": 174,
+          "var": "I",
+          "label": null,
+          "bounds": "1,NTENS"
+        },
+        {
+          "line": 177,
+          "var": "J",
+          "label": null,
+          "bounds": "1,NTENS"
+        },
+        {
+          "line": 237,
+          "var": "I",
+          "label": null,
+          "bounds": "1,3"
+        },
+        {
+          "line": 238,
+          "var": "J",
+          "label": null,
+          "bounds": "1,3"
+        },
+        {
+          "line": 242,
+          "var": "K6",
+          "label": null,
+          "bounds": "1,NSTATV"
+        },
+        {
+          "line": 248,
+          "var": "K1",
+          "label": null,
+          "bounds": "1,3"
+        },
+        {
+          "line": 249,
+          "var": "K2",
+          "label": null,
+          "bounds": "1,3"
+        },
+        {
+          "line": 255,
+          "var": "K6",
+          "label": null,
+          "bounds": "1,NTENS"
+        },
+        {
+          "line": 258,
+          "var": "K6",
+          "label": null,
+          "bounds": "1,NSTATV"
+        },
+        {
+          "line": 277,
+          "var": "I",
+          "label": null,
+          "bounds": "0,8"
+        },
+        {
+          "line": 282,
+          "var": "M",
+          "label": null,
+          "bounds": "1,3"
+        },
+        {
+          "line": 284,
+          "var": "N",
+          "label": null,
+          "bounds": "1,3"
+        },
+        {
+          "line": 291,
+          "var": "N",
+          "label": null,
+          "bounds": "1,3"
+        },
+        {
+          "line": 295,
+          "var": "K6",
+          "label": null,
+          "bounds": "1,NTENS"
+        },
+        {
+          "line": 305,
+          "var": "K6",
+          "label": null,
+          "bounds": "1,NTENS"
+        },
+        {
+          "line": 306,
+          "var": "K5",
+          "label": null,
+          "bounds": "1,NTENS"
+        },
+        {
+          "line": 320,
+          "var": "K6",
+          "label": null,
+          "bounds": "1,NTENS"
+        },
+        {
+          "line": 327,
+          "var": "K6",
+          "label": null,
+          "bounds": "1,3"
+        },
+        {
+          "line": 330,
+          "var": "K6",
+          "label": null,
+          "bounds": "4,NTENS"
+        },
+        {
+          "line": 340,
+          "var": "K6",
+          "label": null,
+          "bounds": "1,NTENS"
+        },
+        {
+          "line": 343,
+          "var": "K5",
+          "label": null,
+          "bounds": "1,NTENS"
+        },
+        {
+          "line": 362,
+          "var": "K5",
+          "label": null,
+          "bounds": "1,NTENS"
+        },
+        {
+          "line": 371,
+          "var": "K5",
+          "label": null,
+          "bounds": "1,NTENS"
+        },
+        {
+          "line": 374,
+          "var": "K1",
+          "label": null,
+          "bounds": "1,3"
+        },
+        {
+          "line": 375,
+          "var": "K2",
+          "label": null,
+          "bounds": "1,3"
+        },
+        {
+          "line": 384,
+          "var": "K6",
+          "label": null,
+          "bounds": "1,NTENS"
+        },
+        {
+          "line": 385,
+          "var": "K5",
+          "label": null,
+          "bounds": "1,NTENS"
+        }
+      ],
+      "hazards": [
+        {
+          "severity": "info",
+          "code": "AUTOMATIC_ARRAY",
+          "line": 122,
+          "message": "local array STRG(NTENS,NTENS) is sized by dummy arguments: an automatic array (not standard F77); use a Vec or fixed max size in Rust"
+        },
+        {
+          "severity": "info",
+          "code": "AUTOMATIC_ARRAY",
+          "line": 122,
+          "message": "local array NSTR(NTENS) is sized by dummy arguments: an automatic array (not standard F77); use a Vec or fixed max size in Rust"
+        },
+        {
+          "severity": "info",
+          "code": "AUTOMATIC_ARRAY",
+          "line": 122,
+          "message": "local array DELTAV(NTENS) is sized by dummy arguments: an automatic array (not standard F77); use a Vec or fixed max size in Rust"
+        },
+        {
+          "severity": "info",
+          "code": "AUTOMATIC_ARRAY",
+          "line": 122,
+          "message": "local array BVEC(NTENS) is sized by dummy arguments: an automatic array (not standard F77); use a Vec or fixed max size in Rust"
+        },
+        {
+          "severity": "info",
+          "code": "AUTOMATIC_ARRAY",
+          "line": 122,
+          "message": "local array STRS(NTENS) is sized by dummy arguments: an automatic array (not standard F77); use a Vec or fixed max size in Rust"
+        },
+        {
+          "severity": "info",
+          "code": "AUTOMATIC_ARRAY",
+          "line": 122,
+          "message": "local array STATE(NSTATV) is sized by dummy arguments: an automatic array (not standard F77); use a Vec or fixed max size in Rust"
+        },
+        {
+          "severity": "info",
+          "code": "AUTOMATIC_ARRAY",
+          "line": 122,
+          "message": "local array VV(NTENS) is sized by dummy arguments: an automatic array (not standard F77); use a Vec or fixed max size in Rust"
+        },
+        {
+          "severity": "warning",
+          "code": "INTRINSIC_SHADOWED",
+          "line": 122,
+          "message": "array INDEX hides the intrinsic function INDEX inside UMAT"
+        },
+        {
+          "severity": "warning",
+          "code": "DO_VAR_REUSED_IN_GOTO_LOOP",
+          "line": 277,
+          "message": "DO variable I also carries state across the GO TO 80 loop (lines 247-368): it is read after label 80 and then clobbered by this DO loop, so the translation must keep the two uses as separate variables"
+        },
+        {
+          "severity": "info",
+          "code": "BACKWARD_GOTO",
+          "line": 368,
+          "message": "GO TO 80 jumps back to line 247: an implicit loop to restructure as `loop`/`for` (see f77-semantics.md, GOTO elimination)"
+        },
+        {
+          "severity": "info",
+          "code": "BACKWARD_GOTO",
+          "line": 380,
+          "message": "GO TO 90 jumps back to line 254: an implicit loop to restructure as `loop`/`for` (see f77-semantics.md, GOTO elimination)"
+        }
+      ],
+      "statement_count": 205,
+      "acceptance": [
+        "WHEN the Rust port of UMAT is called with bounded finite inputs THEN it SHALL match the gfortran -std=legacy oracle on STRESS, STATEV, DDSDDE, DFGRD1 for at least 1,024 proptest cases.",
+        "IF STRESS(NTENS) is shorter than its declared size THEN the Rust port SHALL return an error instead of accessing it out of bounds.",
+        "IF STATEV(NSTATV) is shorter than its declared size THEN the Rust port SHALL return an error instead of accessing it out of bounds.",
+        "IF DDSDDE(NTENS,NTENS) is shorter than its declared size THEN the Rust port SHALL return an error instead of accessing it out of bounds.",
+        "IF DDSDDT(NTENS) is shorter than its declared size THEN the Rust port SHALL return an error instead of accessing it out of bounds.",
+        "IF DRPLDE(NTENS) is shorter than its declared size THEN the Rust port SHALL return an error instead of accessing it out of bounds.",
+        "IF STRAN(NTENS) is shorter than its declared size THEN the Rust port SHALL return an error instead of accessing it out of bounds.",
+        "IF DSTRAN(NTENS) is shorter than its declared size THEN the Rust port SHALL return an error instead of accessing it out of bounds.",
+        "IF PROPS(NPROPS) is shorter than its declared size THEN the Rust port SHALL return an error instead of accessing it out of bounds.",
+        "The GO TO 80 loop (lines 247-368) SHALL be replaced by structured control flow with the label documented.",
+        "The GO TO 90 loop (lines 254-380) SHALL be replaced by structured control flow with the label documented.",
+        "In/out arguments SHALL be grouped into an explicit `&mut State` struct; no globals."
+      ]
+    },
+    {
+      "name": "TRANSPOSE",
+      "kind": "SUBROUTINE",
+      "line_start": 400,
+      "line_end": 409,
+      "signature": "SUBROUTINE TRANSPOSE(A,AT)",
+      "args": [
+        {
+          "name": "A",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "dummy",
+          "dims": [
+            "3",
+            "3"
+          ],
+          "intent": "in",
+          "value": null,
+          "rust_type": "&[f64] /* 3x3, column-major */"
+        },
+        {
+          "name": "AT",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "dummy",
+          "dims": [
+            "3",
+            "3"
+          ],
+          "intent": "out",
+          "value": null,
+          "rust_type": "&mut [f64] /* 3x3, column-major */"
+        }
+      ],
+      "includes": [],
+      "implicit_rules": [
+        "A-H: REAL",
+        "I-N: INTEGER",
+        "O-Z: REAL"
+      ],
+      "symbols": [
+        {
+          "name": "I",
+          "type": "INTEGER",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "J",
+          "type": "INTEGER",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "i32"
+        }
+      ],
+      "common_blocks": [],
+      "calls": [],
+      "labels": {},
+      "gotos": [],
+      "do_loops": [
+        {
+          "line": 403,
+          "var": "I",
+          "label": null,
+          "bounds": "1 , 3"
+        },
+        {
+          "line": 404,
+          "var": "J",
+          "label": null,
+          "bounds": "1 , 3"
+        }
+      ],
+      "hazards": [
+        {
+          "severity": "warning",
+          "code": "INTRINSIC_SHADOWED",
+          "line": 400,
+          "message": "SUBROUTINE TRANSPOSE has the name of a Fortran intrinsic; compiled as an external by F77 rules but a hazard for modern compilers and readers"
+        }
+      ],
+      "statement_count": 8,
+      "acceptance": [
+        "WHEN the Rust port of TRANSPOSE is called with bounded finite inputs THEN it SHALL match the gfortran -std=legacy oracle on AT for at least 1,024 proptest cases."
+      ]
+    },
+    {
+      "name": "DETERMINANT",
+      "kind": "SUBROUTINE",
+      "line_start": 413,
+      "line_end": 419,
+      "signature": "SUBROUTINE DETERMINANT(A,DET)",
+      "args": [
+        {
+          "name": "A",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "dummy",
+          "dims": [
+            "3",
+            "3"
+          ],
+          "intent": "in",
+          "value": null,
+          "rust_type": "&[f64] /* 3x3, column-major */"
+        },
+        {
+          "name": "DET",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "out",
+          "value": null,
+          "rust_type": "&mut f64"
+        }
+      ],
+      "includes": [],
+      "implicit_rules": [
+        "A-H: REAL",
+        "I-N: INTEGER",
+        "O-Z: REAL"
+      ],
+      "symbols": [],
+      "common_blocks": [],
+      "calls": [],
+      "labels": {},
+      "gotos": [],
+      "do_loops": [],
+      "hazards": [],
+      "statement_count": 3,
+      "acceptance": [
+        "WHEN the Rust port of DETERMINANT is called with bounded finite inputs THEN it SHALL match the gfortran -std=legacy oracle on DET for at least 1,024 proptest cases."
+      ]
+    },
+    {
+      "name": "VMATMUL",
+      "kind": "SUBROUTINE",
+      "line_start": 423,
+      "line_end": 435,
+      "signature": "SUBROUTINE VMATMUL(A,B,N,C)",
+      "args": [
+        {
+          "name": "A",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "dummy",
+          "dims": [
+            "3",
+            "3"
+          ],
+          "intent": "in",
+          "value": null,
+          "rust_type": "&[f64] /* 3x3, column-major */"
+        },
+        {
+          "name": "B",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "dummy",
+          "dims": [
+            "3",
+            "3"
+          ],
+          "intent": "in",
+          "value": null,
+          "rust_type": "&[f64] /* 3x3, column-major */"
+        },
+        {
+          "name": "N",
+          "type": "INTEGER",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "in",
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "C",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "dummy",
+          "dims": [
+            "N"
+          ],
+          "intent": "out",
+          "value": null,
+          "rust_type": "&mut [f64] /* N */"
+        }
+      ],
+      "includes": [],
+      "implicit_rules": [
+        "A-H: REAL",
+        "I-N: INTEGER",
+        "O-Z: REAL"
+      ],
+      "symbols": [
+        {
+          "name": "I",
+          "type": "INTEGER",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "J",
+          "type": "INTEGER",
+          "typing": "explicit",
+          "role": "local",
+          "dims": null,
+          "intent": null,
+          "value": null,
+          "rust_type": "i32"
+        }
+      ],
+      "common_blocks": [],
+      "calls": [],
+      "labels": {},
+      "gotos": [],
+      "do_loops": [],
+      "hazards": [],
+      "statement_count": 11,
+      "acceptance": [
+        "WHEN the Rust port of VMATMUL is called with bounded finite inputs THEN it SHALL match the gfortran -std=legacy oracle on C for at least 1,024 proptest cases.",
+        "IF C(N) is shorter than its declared size THEN the Rust port SHALL return an error instead of accessing it out of bounds."
+      ]
+    },
+    {
+      "name": "TENF",
+      "kind": "SUBROUTINE",
+      "line_start": 439,
+      "line_end": 461,
+      "signature": "SUBROUTINE TENF(V,N,M)",
+      "args": [
+        {
+          "name": "V",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "dummy",
+          "dims": [
+            "N"
+          ],
+          "intent": "in",
+          "value": null,
+          "rust_type": "&[f64] /* N */"
+        },
+        {
+          "name": "N",
+          "type": "INTEGER",
+          "typing": "implicit",
+          "role": "dummy",
+          "dims": null,
+          "intent": "in",
+          "value": null,
+          "rust_type": "i32"
+        },
+        {
+          "name": "M",
+          "type": "REAL*8",
+          "typing": "explicit",
+          "role": "dummy",
+          "dims": [
+            "3",
+            "3"
+          ],
+          "intent": "out",
+          "value": null,
+          "rust_type": "&mut [f64] /* 3x3, column-major */"
+        }
+      ],
+      "includes": [],
+      "implicit_rules": [
+        "A-H: REAL",
+        "I-N: INTEGER",
+        "O-Z: REAL"
+      ],
+      "symbols": [],
+      "common_blocks": [],
+      "calls": [],
+      "labels": {},
+      "gotos": [],
+      "do_loops": [],
+      "hazards": [],
+      "statement_count": 21,
+      "acceptance": [
+        "WHEN the Rust port of TENF is called with bounded finite inputs THEN it SHALL match the gfortran -std=legacy oracle on M for at least 1,024 proptest cases.",
+        "IF V(N) is shorter than its declared size THEN the Rust port SHALL return an error instead of accessing it out of bounds."
+      ]
+    }
+  ],
+  "call_graph": {
+    "SDVINI": [],
+    "FLOW": [],
+    "UMAT": [
+      "DETERMINANT",
+      "TENF",
+      "TRANSPOSE",
+      "VMATMUL"
+    ],
+    "TRANSPOSE": [],
+    "DETERMINANT": [],
+    "VMATMUL": [],
+    "TENF": []
+  },
+  "externals": [],
+  "schedule": [
+    "SDVINI",
+    "FLOW",
+    "TRANSPOSE",
+    "DETERMINANT",
+    "VMATMUL",
+    "TENF",
+    "UMAT"
+  ],
+  "file_hazards": [
+    {
+      "severity": "warning",
+      "code": "STRAY_END",
+      "line": 463,
+      "message": "END statement outside any program unit (ignored by most compilers, rejected by some)"
+    }
+  ],
+  "summary": {
+    "units": 7,
+    "gotos": 2,
+    "backward_gotos": 2,
+    "common_blocks": 0,
+    "hazards": {
+      "error": 2,
+      "warning": 4,
+      "info": 14
+    },
+    "units_with_errors": [
+      "SDVINI"
+    ]
+  }
+}
