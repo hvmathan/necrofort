@@ -1,0 +1,25 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Run oracle-harness tests on Rust edit",
+      "description": "Runs cargo test (including the gfortran differential proptest suite) when a .rs file in oracle-harness/src/ is saved.",
+      "trigger": "PostFileSave",
+      "matcher": "oracle-harness/src/.*\\.rs$",
+      "action": {
+        "type": "command",
+        "command": "cd oracle-harness && cargo test 2>&1 | tail -n 40"
+      }
+    },
+    {
+      "name": "Run oracle-harness tests on new Rust file",
+      "description": "Same as above for newly created .rs files in oracle-harness/src/.",
+      "trigger": "PostFileCreate",
+      "matcher": "oracle-harness/src/.*\\.rs$",
+      "action": {
+        "type": "command",
+        "command": "cd oracle-harness && cargo test 2>&1 | tail -n 40"
+      }
+    }
+  ]
+}

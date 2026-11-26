@@ -1,0 +1,17 @@
+[package]
+name = "oracle-harness"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Safe Rust + WebAssembly resurrection of Fortran 77 kernels, verified against the gfortran-compiled originals"
+repository = "https://github.com/hvmathan/necrofort"
+build = "build.rs"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+wasm-bindgen = "0.2"
+
+[dev-dependencies]
+proptest = "1"
